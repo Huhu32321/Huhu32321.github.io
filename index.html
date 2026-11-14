@@ -50,6 +50,10 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .bar .arr button{width:34px;height:34px;border-radius:10px;background:var(--chip);display:grid;place-items:center;font-size:15px}
 .bar .arr button:hover{background:rgba(255,226,180,.16)}
 .bar .open{font-size:12px;font-weight:600;color:#1a1209;background:var(--accent);padding:8px 12px;border-radius:10px;white-space:nowrap;margin-top:6px}
+.quick{position:fixed;z-index:5;left:20px;bottom:28px;display:flex;gap:6px}
+.quick a{font-size:12px;color:var(--muted);text-decoration:none;background:var(--glass);border:1px solid var(--line);border-radius:9px;padding:6px 10px;backdrop-filter:blur(10px)}
+.quick a:hover{color:var(--ink);border-color:var(--accent)}
+@media (max-width:1100px){.quick{display:none}}
 .prog{position:fixed;z-index:5;right:22px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px}
 .prog i{width:3px;height:16px;border-radius:2px;background:rgba(255,236,210,.18);transition:.3s;cursor:pointer}
 .prog i.on{background:var(--accent);height:30px}
@@ -158,11 +162,12 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
     <button data-go="research">Research</button>
     <button data-go="projects">Projects</button>
     <button data-go="experience">Experience</button>
-    <button id="classicBtn" title="Read as a normal page">Page view</button>
+    <button id="classicBtn" title="Simple academic page">Academic page</button>
     <button class="cta" data-go="contact">Contact</button>
   </div>
 </div>
 
+<div class="quick"><a href="academic.html">Academic page</a><a href="https://drive.google.com/file/d/1As1x6es4IQkaW6iYtm1VJuxniRbGLSQb/view?usp=sharing" target="_blank" rel="noopener">Dissertation</a><a href="mailto:caoyuhui321@gmail.com">Email</a></div>
 <div class="prog" id="prog"></div>
 <div class="hint" id="hint"><span>Scroll to walk in ↓</span></div>
 
@@ -333,7 +338,7 @@ function openPanel(key){const b=$('#pbody');b.innerHTML='';b.appendChild(section
   $('#panel').classList.add('open');$('#panel').setAttribute('aria-hidden','false');$('#shade').classList.add('on');panelOpen=true}
 function closePanel(){$('#panel').classList.remove('open');$('#panel').setAttribute('aria-hidden','true');$('#shade').classList.remove('on');panelOpen=false;$('#pbody').innerHTML=''}
 $('#close').onclick=closePanel;$('#shade').onclick=closePanel;
-$('#classicBtn').onclick=()=>{const b=$('#classicBody');b.innerHTML='';['about','research','projects','experience','contact'].forEach(k=>b.appendChild(sections[k].cloneNode(true)));$('#classic').classList.add('open')};
+$('#classicBtn').onclick=()=>{location.href='academic.html'};const _unused=()=>{const b=$('#classicBody');b.innerHTML='';['about','research','projects','experience','contact'].forEach(k=>b.appendChild(sections[k].cloneNode(true)));$('#classic').classList.add('open')};
 $('#classicClose').onclick=()=>{$('#classic').classList.remove('open');$('#classicBody').innerHTML=''};
 
 /* ---------- scroll mapping ---------- */
